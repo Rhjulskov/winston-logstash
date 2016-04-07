@@ -1,0 +1,51 @@
+{
+  "dependencies": {
+    "winston": {
+      "version": "2.2.0",
+      "resolved": "https://registry.npmjs.org/winston/-/winston-2.2.0.tgz",
+      "from": "https://registry.npmjs.org/winston/-/winston-2.2.0.tgz",
+      "dependencies": {
+        "async": {
+          "version": "1.0.0",
+          "resolved": "https://registry.npmjs.org/async/-/async-1.0.0.tgz",
+          "from": "https://registry.npmjs.org/async/-/async-1.0.0.tgz"
+        },
+        "colors": {
+          "version": "1.0.3",
+          "resolved": "https://registry.npmjs.org/colors/-/colors-1.0.3.tgz",
+          "from": "https://registry.npmjs.org/colors/-/colors-1.0.3.tgz"
+        },
+        "cycle": {
+          "version": "1.0.3",
+          "resolved": "https://registry.npmjs.org/cycle/-/cycle-1.0.3.tgz",
+          "from": "https://registry.npmjs.org/cycle/-/cycle-1.0.3.tgz"
+        },
+        "eyes": {
+          "version": "0.1.8",
+          "resolved": "https://registry.npmjs.org/eyes/-/eyes-0.1.8.tgz",
+          "from": "https://registry.npmjs.org/eyes/-/eyes-0.1.8.tgz"
+        },
+        "isstream": {
+          "version": "0.1.2",
+          "resolved": "https://registry.npmjs.org/isstream/-/isstream-0.1.2.tgz",
+          "from": "https://registry.npmjs.org/isstream/-/isstream-0.1.2.tgz"
+        },
+        "pkginfo": {
+          "version": "0.3.1",
+          "resolved": "https://registry.npmjs.org/pkginfo/-/pkginfo-0.3.1.tgz",
+          "from": "https://registry.npmjs.org/pkginfo/-/pkginfo-0.3.1.tgz"
+        },
+        "stack-trace": {
+          "version": "0.0.9",
+          "resolved": "https://registry.npmjs.org/stack-trace/-/stack-trace-0.0.9.tgz",
+          "from": "https://registry.npmjs.org/stack-trace/-/stack-trace-0.0.9.tgz"
+        }
+      }
+    },
+    "winston-logstash": {
+      "version": "0.2.11",
+      "resolved": "https://registry.npmjs.org/winston-logstash/-/winston-logstash-0.2.11.tgz",
+      "from": "https://registry.npmjs.org/winston-logstash/-/winston-logstash-0.2.11.tgz"
+    }
+  }
+}
