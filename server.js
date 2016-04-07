@@ -1,6 +1,9 @@
 import winston from 'winston';
 import 'winston-logstash';
 
+const _printConnectionError = (reason = 'Unknow error') => {
+  console.log(`winston-logstash can't establish connection to Logstash: ${reason}`);
+}
 
 export default class Logger {
   constructor({host, port, label = 'Raw Milk'} = paramenters) {
@@ -28,14 +31,12 @@ export default class Logger {
       transports: [
         new winston.transports.Console({
           label: label,
-          //timestamp: ()  => Date.now(),
           colorize: true,
           level: 'error',
           handleExceptions: true
         }),
         new winston.transports.Logstash({
           host: host,
-          node_name: 'my node name',
           port: port,
           label: label,
           level: 'error',
@@ -67,14 +68,24 @@ export default class Logger {
 
 };
 
-logger = new Logger({
-  host: '40.69.25.123',
-  port: 5000,
-  label: 'survey-app'
-});
+if (Meteor.settings && Meteor.settings.LogstashHost) {
+  if (Meteor.settings && Meteor.settings.LogstashPort) {
+    logger = new Logger({
+      host: Meteor.settings.LogstashHost,
+      port: Meteor.settings.LogstashPort,
+      label: Meteor.settings.LogstashLabel
+    });
+  } else {
+    _printConnectionError("Missing Meteor.settings.LogstashPort environment variable")
+  }
+} else {
+  _printConnectionError("Missing Meteor.settings.LogstashHost environment variable")
+}
+
 
 Meteor.methods({
   'winston-client': (level, message) => {
     logger[level](message)
   }
 });
+
