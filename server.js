@@ -6,7 +6,7 @@ const _printConnectionError = (reason = 'Unknow error') => {
 }
 
 export default class Logger {
-  constructor({host, port, label = 'Raw Milk'} = paramenters) {
+  constructor({host, port, label} = paramenters) {
     let customLevels = {
       levels: {
         debug: 0,
@@ -26,15 +26,21 @@ export default class Logger {
 
     winston.addColors(customLevels.colors);
 
-    this.logger = new winston.Logger({
-      levels: customLevels.levels,
-      transports: [
+    let transports = [];
+
+    if (process.env.NODE_ENV == 'development') {
+      transports.push(
         new winston.transports.Console({
           label: label,
           colorize: true,
           level: 'error',
           handleExceptions: true
-        }),
+        })
+      );
+    }
+
+    if (host && port) {
+      transports.push(
         new winston.transports.Logstash({
           host: host,
           port: port,
@@ -42,7 +48,12 @@ export default class Logger {
           level: 'error',
           handleExceptions: true
         })
-      ]
+      );
+    }
+
+    this.logger = new winston.Logger({
+      levels: customLevels.levels,
+      transports: transports
     });
   }
 
