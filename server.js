@@ -9,11 +9,11 @@ export default class Logger {
   constructor({host, port, label} = paramenters) {
     let customLevels = {
       levels: {
-        debug: 0,
-        info: 1,
-        silly:2,
-        warn: 3,
-        error: 4
+        silly:4,
+        debug: 3,
+        info: 2,
+        warn: 1,
+        error: 0
       },
       colors: {
         silly: 'magenta',
@@ -33,7 +33,7 @@ export default class Logger {
         new winston.transports.Console({
           label: label,
           colorize: true,
-          level: 'error',
+          level: 'silly',
           handleExceptions: true
         })
       );
@@ -45,7 +45,7 @@ export default class Logger {
           host: host,
           port: port,
           label: label,
-          level: 'error',
+          level: 'info',
           handleExceptions: true
         })
       );
