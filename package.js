@@ -1,6 +1,6 @@
 Package.describe({
   name: 'nordlys:winston-logstash',
-  version: '0.0.4',
+  version: '0.0.5',
   // Brief, one-line summary of the package.
   summary: 'Client to server winston logging combined with Logstash transport',
   // URL to the Git repository containing the source code for this package.
@@ -14,7 +14,7 @@ Npm.depends({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.3');
+  api.versionsFrom('1.2');
   api.use('ecmascript');
   api.addFiles( 'server.js', [ 'server' ] );
   api.addFiles( 'client.js', [ 'client' ] );
